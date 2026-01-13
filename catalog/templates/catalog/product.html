@@ -1,0 +1,22 @@
+{% extends 'catalog/base.html' %}
+
+{% block title %}Список Автозапчасти{% endblock %}
+
+{% block title2 %}Информация о товаре{% endblock %}
+
+{% load my_tags %}
+
+{% block content %}
+    <div class="row text-center">
+        <div class="list-unstyled mt-3 mb-4 text-start m-3">
+            <h1 class= "card-title pricing-card-title">{{ product.product_name }}</h1>
+            <img src="{{ product.picture | media_filter }}" alt="Logo" width="300" height="300" style="object-fit: cover;">
+            <p>Категория: {{ product.category }}</p>
+            <p>Описание: {{ product.description }}</p>
+            <p>Цена: {{ product.price }} руб.</p>
+            <p>Дата создания: {{ product.created_at|date:"d M Y"  }}</p>
+            <a class="p-2 btn btn-outline-primary" href="{%url 'catalog:home'%}">Назад</a>
+
+        </div>
+    </div>
+{% endblock %}
