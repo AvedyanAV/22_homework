@@ -1,0 +1,20 @@
+{% extends 'catalog/base.html' %}
+
+{% block title %}Блог{% endblock %}
+
+{% block title2 %}Блог{% endblock %}
+
+{% load my_tags %}
+
+{% block content %}
+    <div class="row text-center">
+      <h1 class= "card-title pricing-card-title">{{ blog.heading}}</h1>
+      <img src="{{ blog.preview.url }}" alt="Logo" width="300" height="300" style="object-fit: cover;">
+      <p>Количество просмотров: {{ blog.views }}</p>
+      <p>Дата создания: {{ blog.created_at|date:"d M Y"  }}</p>
+      <p>{{ blog.content }}</p>
+      <a class="p-2 btn btn-outline-primary" href="{%url 'blog:blog_list'%}">Назад</a>
+      <a class="p-2 btn btn-secondary" href="{% url 'blog:blog_update' blog.pk %}">Редактирование</a>
+      <a class="p-2 btn btn-danger" href="{% url 'blog:blog_delete' blog.pk %}">Удаление</a>
+    </div>
+{% endblock %}
