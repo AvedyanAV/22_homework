@@ -1,0 +1,24 @@
+{% extends 'catalog/base.html' %}
+
+{% block title %}Блог{% endblock %}
+
+{% block title2 %}Блог{% endblock %}
+
+{% load my_tags %}
+
+{% block content %}
+<a class="p-2 mb-4 btn btn-outline-primary" href="{% url 'blog:blog_form' %}">Создать новую статью</a>
+<div class="row text-center" xmlns="http://www.w3.org/1999/html">
+    {% for blog in blogs %}
+        <div class="col-3">
+            <div class="card-body">
+                <img src="{{ blog.preview.url }}" alt="Logo" width="200" height="200" style="object-fit: cover;">
+                 <ul class="list-unstyled mt-3 mb-4 text-start m-3">
+                     <li>{{ blog.heading }}</li>
+                 </ul>
+                 <a class="p-2 btn btn-outline-primary" href="{%url 'blog:blog_detail' blog.pk%}">Читать статью полностью</a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
